@@ -1,0 +1,40 @@
+{% load static %}
+{% load core_extras %}
+
+<ul>
+    {% if user.chats.all %}
+        {% for chat in user.chats.all %}
+            {% if friend and friend in chat.members.all %}
+                <li class="contact active">
+                    <a class="" style="text-decoration: none; color: white;" href="{% url 'room' room_name=chat.id %}">
+                        <div class="wrap">
+                            <span class="contact-status online"></span>
+                            <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                            <div class="meta" style="min-height: 38px;">
+                                <p class="name">{{ chat.members.all|name_of_member_except:user }}</p>
+                                <p id="lastMsg-{{ chat.id }}" class="preview">{{ chat.last.content }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            {% else %}
+                <li class="contact">
+                    <a class="" style="text-decoration: none; color: white;" href="{% url 'room' room_name=chat.id %}">
+                        <div class="wrap">
+                            <span class="contact-status online"></span>
+                            <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                            <div class="meta" style="min-height: 38px;">
+                                <p class="name">{{ chat.members.all|name_of_member_except:user }}</p>
+                                <p id="lastMsg-{{ chat.id }}" class="preview">{{ chat.last.content }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="my-4 text-center">
+            <p style="font-style: italic;">No Contacts.</p>
+        </div>
+    {% endif %}
+</ul>

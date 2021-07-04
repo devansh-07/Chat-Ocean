@@ -1,0 +1,144 @@
+html, button, div, ul, li{
+    list-style-type: none;
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font: inherit;
+    vertical-align:baseline;
+}
+
+.settings {
+    float: right;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #32465a;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+.settings:hover {
+    background: #435f7a;
+}
+
+.btnactive {
+    background: #435f7a;
+}
+
+.text-input {
+  padding: 4px 2px;
+  width: 100%;
+  border: none;
+  color: #d9d9d9;
+  background-color: #2c3e50;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.profile-pic {
+    width: 40px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+button:focus, button:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
+.more-options {
+    float: right;
+    border: none;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    line-height: 42px;
+    border-radius: 50%;
+    background: transparent;
+    color: black;
+    cursor: pointer;
+    margin: 9px 12px 0 9px;
+}
+
+.more-options:hover {
+    background: lightgray;
+}
+
+.fr-menu {
+    background-color: white;
+    border-color: #e5e8e9;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.5);
+    min-width: 220px;
+    position: absolute;
+    text-align: left;
+    top: 50px;
+    right: 45px;
+}
+
+.fr-menu ul li{
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.fr-menu ul li:hover{
+    background-color: #f2f5f5;
+}
+
+#top-bar div{
+    min-width: 60px;
+}
+
+@media screen and (max-width: 735px) {
+    #profileBtnCont {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #profileBtnCont input {
+        width: 45px;
+        height: 45px;
+    }
+    #Profile {
+        display: none;
+    }
+}
+
+.content-section {
+  background: #E6EAEA;
+  padding: 10px 20px;
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.border-gdark {
+    border-color: #c4c4c4 !important;
+}
+
+a, a:hover, a:focus, a:active {
+     text-decoration: none;
+}
+
+#top-bar a {
+  border: none;
+  width: 100%;
+  padding: 12px 0;
+  background: #32465a;
+  color: #f5f5f5;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-family: "Noto Sans", sans-serif;
+}
+
+#top-bar a:hover {
+  background: #435f7a;
+}
+
+#top-bar a.active {
+  background: #435f7a;
+}

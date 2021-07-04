@@ -1,0 +1,83 @@
+{% load static %}
+{% load core_extras %}
+
+<ul>
+    <div class="mb-5">
+        <div class="my-2">
+            <button id="sentExpandBtn" class="border-bottom border-right btn-primary shadow-none p-2 ml-2" style="background-color: #2c3e50; width: 100%; border: none; outline: none;" type="button" name="button" onclick="toggleSentRequestList()">
+                Sent
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="my-3">
+            {% if sent_requests %}
+                <div id="sentRequestList" class="">
+                    {% for user_contact in sent_requests %}
+                    <li class="contact row">
+                        <div class="col">
+                            <div class="wrap" style="clear: both;">
+                                <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                                <div class="meta" style="">
+                                    <p style="line-height: 30px;" class="name">{{ user_contact.user.first_name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button class="settings mr-2" style="width: 40px; height: 40px;" onclick='_removeSentRequest("{{ user_contact.user.username }}")'>
+                                <i id="addFriend" class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center">
+                    <p style="font-size: 14px; font-style: italic;">No Sent Requests.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="">
+        <div class="my-2">
+            <button id="receivedExpandBtn" class="border-bottom border-right btn-primary shadow-none p-2 ml-2" style="background-color: #2c3e50; width: 100%; border: none; outline: none;" type="button" name="button" onclick="toggleReceivedRequestList()">
+                Received
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="my-3">
+            {% if received_requests %}
+                <div id="receivedRequestList" class="">
+                    {% for user_contact in received_requests %}
+                    <li class="contact row">
+                        <div class="col">
+                            <div class="wrap" style="clear: both;">
+                                <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                                <div class="meta" style="">
+                                    <p style="line-height: 30px;" class="name">{{ user_contact.user.first_name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <!-- Accept -->
+                            <button class="settings mr-2" style="width: 40px; height: 40px;" onclick='_acceptReceivedRequest("{{ user_contact.user.username }}")'>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </button>
+
+                            <!-- Decline -->
+                            <button class="settings mr-2" style="width: 40px; height: 40px;" onclick='_removeReceivedRequest("{{ user_contact.user.username }}")'>
+                                <i id="addFriend" class="fa fa-times" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center">
+                    <p style="font-size: 14px; font-style: italic;">No Received Requests.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</ul>

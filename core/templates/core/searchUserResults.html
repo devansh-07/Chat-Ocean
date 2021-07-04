@@ -1,0 +1,45 @@
+{% load static %}
+{% load core_extras %}
+
+<ul>
+    {% if user %}
+        {% if areFriends %}
+            <a class="" style="text-decoration: none; color: white;" href="{% url 'room' room_name=chat.id %}">
+                <li class="contact row">
+                    <div class="col">
+                        <div class="wrap" style="clear: both;">
+                            <span class="contact-status online"></span>
+                            <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                            <div class="meta" style="">
+                                <p style="" class="name">{{ user.first_name }}</p>
+                                <p id="" class="preview">{{ chat.last.content }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </a>
+        {% else %}
+            <li class="contact row">
+                <div class="col">
+                    <div class="wrap" style="clear: both;">
+                        <img src="{% static 'core/images/avatar.jpg' %}" alt="Profile Picture"/>
+                        <div class="meta" style="">
+                            <p style="line-height: 30px;" class="name">{{ user.first_name }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    {% if user.contacts.first not in curr_user_contact.sent_requests.all and user.contacts.first not in curr_user_contact.received_requests.all %}
+                        <button class="settings mr-2" style="width: 40px; height: 40px;" onclick='send_friend_request("{{ user.username }}")'>
+                            <i id="addFriend" class="fa fa-user-plus" aria-hidden="true"></i>
+                        </button>
+                    {% endif %}
+                </div>
+            </li>
+        {% endif %}
+    {% else %}
+        <div class="text-center m-4">
+            <p style="font-style: italic;">No results found.</p>
+        </div>
+    {% endif %}
+</ul>
